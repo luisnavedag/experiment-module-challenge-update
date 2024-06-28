@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./Button";
+import IterationForm from "./IterationForm";
 
 const ExperimentModule = () => {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,10 @@ const ExperimentModule = () => {
 
       {open && (
         <>
-          <div className="mt-2">This is content</div>
+          <div className="mt-2">
+            <IterationForm />
+          </div>
+
           <div className="flex flex-row flex-1 justify-end">
             <Button>Lock</Button>
             <Button highlight={true}>Add Iteration</Button>
