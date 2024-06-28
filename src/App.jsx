@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Layout from "./components/Layout";
+import ExperimentModule from "./components/ExperimentModule";
 
 function App() {
-  return <Layout></Layout>;
+  return (
+    <Layout>
+      <ExperimentModule />
+    </Layout>
+  );
 }
 
 export default App;
