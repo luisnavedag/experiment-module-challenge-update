@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-const Button = ({ children, className, highlight = false }) => {
+const Button = ({ children, className, highlight = false, ...props }) => {
   return (
     <button
       className={classNames(
@@ -8,6 +8,7 @@ const Button = ({ children, className, highlight = false }) => {
         { "text-gray-600": !highlight },
         className
       )}
+      {...props}
     >
       {children}
     </button>
