@@ -23,6 +23,13 @@ const ExperimentModule = () => {
             ...iterations.slice(index + 1),
           ]);
         }}
+        onChange={(v) => {
+          setIterations((iterations) => [
+            ...iterations.slice(0, index),
+            v,
+            ...iterations.slice(index + 1),
+          ]);
+        }}
       />
     ));
   }, [iterations, setIterations]);
@@ -38,13 +45,14 @@ const ExperimentModule = () => {
           <div className="mt-4 space-y-2">
             {iterationList}
 
-            {openForm && (
-              <IterationForm
-                index={iterations.length}
-                value={newTitle}
-                onChange={(value) => setNewTitle(value)}
-              />
-            )}
+            {openForm ||
+              (iterations.length == 0 && (
+                <IterationForm
+                  index={iterations.length}
+                  value={newTitle}
+                  onChange={(value) => setNewTitle(value)}
+                />
+              ))}
           </div>
 
           <div className="flex flex-row flex-1 justify-end mt-4">
