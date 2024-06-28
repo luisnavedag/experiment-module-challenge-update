@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Button from "./Button";
 import IterationForm from "./IterationForm";
+import IterationModule from "./IterationModule";
 
 const ExperimentModule = () => {
   const [open, setOpen] = useState(false);
@@ -10,6 +11,22 @@ const ExperimentModule = () => {
 
   const [openForm, setOpenForm] = useState(false);
 
+  const iterationList = useMemo(() => {
+    return iterations.map((item, index) => (
+      <IterationModule
+        data={item}
+        key={index}
+        index={index}
+        onRemove={() => {
+          setIterations((iterations) => [
+            ...iterations.slice(0, index),
+            ...iterations.slice(index + 1),
+          ]);
+        }}
+      />
+    ));
+  }, [iterations, setIterations]);
+
   return (
     <div className="border rounded-md p-4 flex flex-col w-full bg-gray-50">
       <div className="flex flex-row flex-1" onClick={() => setOpen(!open)}>
@@ -18,7 +35,9 @@ const ExperimentModule = () => {
 
       {open && (
         <>
-          <div className="mt-4">
+          <div className="mt-4 space-y-2">
+            {iterationList}
+
             {openForm && (
               <IterationForm
                 index={iterations.length}
@@ -29,7 +48,7 @@ const ExperimentModule = () => {
           </div>
 
           <div className="flex flex-row flex-1 justify-end mt-4">
-            {openForm ? (
+            {openForm || iterations.length == 0 ? (
               <>
                 <Button
                   onClick={() => {
@@ -40,6 +59,7 @@ const ExperimentModule = () => {
                   Cancel
                 </Button>
                 <Button
+                  highlight
                   onClick={() => {
                     setIterations((iterations) => [
                       ...iterations,
