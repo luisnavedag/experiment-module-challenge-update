@@ -11,6 +11,7 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
     <div className='flex w-full flex-col bg-white'>
       <div
         className='flex flex-1 flex-row bg-white py-2 px-4 rounded-md'
+        data-testid={`iteration-module-${index}`}
         onClick={() => setOpen(!open)}
       >
         <div className='flex flex-1'>
@@ -35,7 +36,10 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
               className={classNames('border border-gray-600 rounded-md m-1', {
                 'border-green-600 text-green-600': selection === 'short'
               })}
-              onClick={() => setSelection(selection => selection === 'short' ? '' : 'short')}
+              onClick={() =>
+                setSelection((selection) =>
+                  selection === 'short' ? '' : 'short'
+                )}
             >
               Short
             </Button>
@@ -43,7 +47,10 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
               className={classNames('border border-gray-600 rounded-md m-1', {
                 'border-green-600 text-green-600': selection === 'medium'
               })}
-              onClick={() => setSelection(selection => selection === 'medium' ? '' : 'medium')}
+              onClick={() =>
+                setSelection((selection) =>
+                  selection === 'medium' ? '' : 'medium'
+                )}
             >
               Medium Length
             </Button>
@@ -51,7 +58,10 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
               className={classNames('border border-gray-600 rounded-md m-1', {
                 'border-green-600 text-green-600': selection === 'long'
               })}
-              onClick={() => setSelection(selection => selection === 'long' ? '' : 'long')}
+              onClick={() =>
+                setSelection((selection) =>
+                  selection === 'long' ? '' : 'long'
+                )}
             >
               VERY VERY VERY LONG (UP TO 35 CHAR)
             </Button>
