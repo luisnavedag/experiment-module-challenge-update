@@ -45,18 +45,18 @@ const ExperimentModule = () => {
           <div className='mt-4 space-y-2'>
             {iterationList}
 
-            {openForm ||
-              (iterations.length === 0 && (
+            {(openForm ||
+              iterations.length === 0) && (
                 <IterationForm
                   index={iterations.length}
                   value={newTitle}
                   onChange={(value) => setNewTitle(value)}
                 />
-              ))}
+              )}
           </div>
 
           <div className='flex flex-row flex-1 justify-end mt-4'>
-            {openForm || iterations.length === 0
+            {(openForm || iterations.length === 0)
               ? (
                 <>
                   <Button
@@ -81,7 +81,7 @@ const ExperimentModule = () => {
                     Done
                   </Button>
                 </>
-                )
+              )
               : (
                 <>
                   <Button>Lock</Button>
@@ -89,7 +89,7 @@ const ExperimentModule = () => {
                     Add Iteration
                   </Button>
                 </>
-                )}
+              )}
           </div>
         </>
       )}
