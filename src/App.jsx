@@ -1,10 +1,10 @@
+import ExperimentPanel from './components/ExperimentPanel'
 import Layout from './components/Layout'
-import ExperimentModule from './components/ExperimentModule'
 
 function App () {
   return (
     <Layout>
-      <ExperimentModule />
+      <ExperimentPanel />
     </Layout>
   )
 }

@@ -18,7 +18,7 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
           <span>{data.title}</span>
         </div>
 
-        {selection && (
+        {data.selection && (
           <div className='basis-1/4 text-right'>
             <div className='flex items-center gap-2 justify-end'>
               <span>Selection</span>
