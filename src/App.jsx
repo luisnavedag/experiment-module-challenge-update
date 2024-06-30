@@ -1,13 +1,12 @@
-import { useState } from "react";
-import Layout from "./components/Layout";
-import ExperimentModule from "./components/ExperimentModule";
+import Layout from './components/Layout'
+import ExperimentModule from './components/ExperimentModule'
 
-function App() {
+function App () {
   return (
     <Layout>
       <ExperimentModule />
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App
