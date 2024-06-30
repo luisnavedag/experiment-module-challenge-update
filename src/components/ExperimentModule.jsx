@@ -52,7 +52,7 @@ const ExperimentModule = () => {
                   value={newTitle}
                   onChange={(value) => setNewTitle(value)}
                 />
-              )}
+            )}
           </div>
 
           <div className='flex flex-row flex-1 justify-end mt-4'>
@@ -81,7 +81,7 @@ const ExperimentModule = () => {
                     Done
                   </Button>
                 </>
-              )
+                )
               : (
                 <>
                   <Button>Lock</Button>
@@ -89,7 +89,7 @@ const ExperimentModule = () => {
                     Add Iteration
                   </Button>
                 </>
-              )}
+                )}
           </div>
         </>
       )}

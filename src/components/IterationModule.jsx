@@ -13,8 +13,19 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
         className='flex flex-1 flex-row bg-white py-2 px-4 rounded-md'
         onClick={() => setOpen(!open)}
       >
-        <span className='w-20'>EM-{index + 1}</span>
-        <span>{data.title}</span>
+        <div className='flex flex-1'>
+          <span className='w-20'>EM-{index + 1}</span>
+          <span>{data.title}</span>
+        </div>
+
+        {selection && (
+          <div className='basis-1/4 text-right'>
+            <div className='flex items-center gap-2 justify-end'>
+              <span>Selection</span>
+              <span className='flex w-2 h-2 rounded-full bg-green-500' />
+            </div>
+          </div>
+        )}
       </div>
 
       {open && (
@@ -24,7 +35,7 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
               className={classNames('border border-gray-600 rounded-md m-1', {
                 'border-green-600 text-green-600': selection === 'short'
               })}
-              onClick={() => setSelection('short')}
+              onClick={() => setSelection(selection => selection === 'short' ? '' : 'short')}
             >
               Short
             </Button>
@@ -32,7 +43,7 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
               className={classNames('border border-gray-600 rounded-md m-1', {
                 'border-green-600 text-green-600': selection === 'medium'
               })}
-              onClick={() => setSelection('medium')}
+              onClick={() => setSelection(selection => selection === 'medium' ? '' : 'medium')}
             >
               Medium Length
             </Button>
@@ -40,7 +51,7 @@ const IterationModule = ({ data, index, onRemove, onChange }) => {
               className={classNames('border border-gray-600 rounded-md m-1', {
                 'border-green-600 text-green-600': selection === 'long'
               })}
-              onClick={() => setSelection('long')}
+              onClick={() => setSelection(selection => selection === 'long' ? '' : 'long')}
             >
               VERY VERY VERY LONG (UP TO 35 CHAR)
             </Button>
