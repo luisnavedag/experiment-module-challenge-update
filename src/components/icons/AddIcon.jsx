@@ -1,4 +1,4 @@
-const PlusIcon = (props) => {
+const AddIcon = (props) => {
   return (
     <svg
       viewBox='0 0 1024 1024'
@@ -16,4 +16,4 @@ const PlusIcon = (props) => {
   )
 }
 
-export default PlusIcon
+export default AddIcon

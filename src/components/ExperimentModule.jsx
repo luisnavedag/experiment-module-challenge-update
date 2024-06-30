@@ -2,14 +2,19 @@ import { useMemo, useState } from 'react'
 import Button from './Button'
 import IterationForm from './IterationForm'
 import IterationModule from './IterationModule'
+import AddIcon from './icons/AddIcon'
+import LockIcon from './icons/LockIcon'
+import LockOpenIcon from './icons/LockOpenIcon'
+import classNames from 'classnames'
 
 const ExperimentModule = () => {
   const [open, setOpen] = useState(false)
+  const [openForm, setOpenForm] = useState(false)
+
+  const [status, setStatus] = useState('unlocked')
 
   const [iterations, setIterations] = useState([])
   const [newTitle, setNewTitle] = useState('')
-
-  const [openForm, setOpenForm] = useState(false)
 
   const iterationList = useMemo(() => {
     return iterations.map((item, index) => (
@@ -36,8 +41,11 @@ const ExperimentModule = () => {
 
   return (
     <div className='border rounded-md p-4 flex flex-col w-full bg-gray-50'>
-      <div className='flex flex-row flex-1' onClick={() => setOpen(!open)}>
+      <div className={classNames('flex flex-row flex-1 items-center justify-between', { 'opacity-50': status === 'locked' })} onClick={() => setOpen(!open && !(status === 'locked'))}>
         <h1 className='text-xl font-bold'>Experiment Module</h1>
+        <div>
+          {status === 'locked' ? <LockIcon /> : <LockOpenIcon />}
+        </div>
       </div>
 
       {open && (
@@ -84,8 +92,15 @@ const ExperimentModule = () => {
                 )
               : (
                 <>
-                  <Button>Lock</Button>
-                  <Button highlight onClick={() => setOpenForm(true)}>
+                  <Button onClick={() => {
+                    setStatus('locked')
+                    setOpen(false)
+                  }}
+                  >Lock
+                  </Button>
+                  <Button onClick={() => setIterations([])}>Reset</Button>
+                  <Button highlight onClick={() => setOpenForm(true)} className='flex flex-row items-center'>
+                    <AddIcon />
                     Add Iteration
                   </Button>
                 </>
